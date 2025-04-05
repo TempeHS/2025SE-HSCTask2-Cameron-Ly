@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poker Prediction</title>
+  </head>
+  <body>
+    <h1>Poker Prediction Results</h1>
+    <p>Based on your cards, the predicted action probabilities are:</p>
+    <ul>
+      {% for action, probability in actions.items() %}
+      <li>{{ action }}: {{ probability }}</li>
+      {% endfor %}
+    </ul>
+    <br />
+    <a href="/">Go back to input cards</a>
+  </body>
+</html>

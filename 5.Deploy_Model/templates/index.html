@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poker Action Predictor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+        color: #555;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 15px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+      .instructions {
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Poker Action Prediction</h1>
+      <p class="instructions">
+        Please enter the cards in the format: "Ace of Spades", "King of Hearts",
+        etc.
+      </p>
+      <form action="/predict" method="post">
+        <label for="card1">Card 1:</label>
+        <input type="text" id="card1" name="card1" required /><br /><br />
+
+        <label for="card2">Card 2:</label>
+        <input type="text" id="card2" name="card2" required /><br /><br />
+
+        <label for="card3">Card 3:</label>
+        <input type="text" id="card3" name="card3" required /><br /><br />
+
+        <label for="card4">Card 4:</label>
+        <input type="text" id="card4" name="card4" required /><br /><br />
+
+        <label for="card5">Card 5:</label>
+        <input type="text" id="card5" name="card5" required /><br /><br />
+
+        <button type="submit">Predict Action</button>
+      </form>
+
+      {% if prediction %}
+      <div class="result">
+        <h2>Predicted Action: {{ prediction }}</h2>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
