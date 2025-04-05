@@ -1,10 +1,10 @@
 # 2025SE-Cameron.Ly-Task 2
 
-This project aims to develop a data-driven approach to poker decision-making by analyzing hand strength, community cards, and betting patterns. Using statistical models and machine learning, we predict the optimal move (e.g., fold, raise, or go all-in) based on probabilities.
+This project aims to develop a data-driven approach to poker decision-making by analyzing hand strength and probabilities to predict the optimal move (e.g., fold, raise, or go all-in).
 
 ## Description
 
-This project aims to develop a data-driven poker decision system using learning from past data and analyzing features such as hand strength, community cards, and bets. Statistical models and machine learning are used to predict the best strategic action in a game, for example folding, raising, or going all-in, using probability. By considering various changing factors including past plays, the model determines trends and predicts wins under various situations. It enables players to make decisions in an informed way with greater potential for winning. Lastly, the objective is to help players enhance their strategy and decision-making.
+This project aims to develop a data-driven poker decision system using learning from past data and analyzing features such as hand strength, hand types and the unique card ranks. Statistical models and machine learning are used to predict the best strategic action in a game, for example folding, raising, or going all-in, using probability. By considering various changing factors, the model determines trends and predicts wins under various situations. It enables players to make decisions in an informed way with greater potential for winning. Lastly, the objective is to help players enhance their strategy and decision-making.
 
 ## Getting Started
 
