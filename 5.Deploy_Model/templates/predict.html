@@ -3,17 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Poker Prediction</title>
+    <title>Poker Action Predictor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      .container {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        width: 100%;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .result-table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .result-table th,
+      .result-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+      .error {
+        color: red;
+        margin-top: 10px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <h1>Poker Prediction Results</h1>
-    <p>Based on your cards, the predicted action probabilities are:</p>
-    <ul>
-      {% for action, probability in actions.items() %}
-      <li>{{ action }}: {{ probability }}</li>
-      {% endfor %}
-    </ul>
-    <br />
-    <a href="/">Go back to input cards</a>
+    <div class="container">
+      <h1>Poker Action Prediction</h1>
+      <form method="post" action="/">
+        {% for i in range(5) %}
+        <label for="card{{ i+1 }}">Card {{ i+1 }}:</label>
+        <input
+          type="text"
+          name="card{{ i+1 }}"
+          id="card{{ i+1 }}"
+          value="{{ card_inputs[i] if card_inputs else '' }}"
+          required
+        />
+        {% endfor %}
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %} {% if prediction %}
+      <h2>Predicted Action Probabilities</h2>
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Probability</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for action, prob in prediction %}
+          <tr>
+            <td>{{ action }}</td>
+            <td>{{ "%.2f" | format(prob * 100) }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
   </body>
 </html>
