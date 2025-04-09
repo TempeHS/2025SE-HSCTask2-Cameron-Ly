@@ -124,14 +124,14 @@
 
     <div class="input-section">
       <form method="POST">
-        {% for i in range(1, 6) %}
+        {% for card in card_inputs %}
         <div class="card-input">
-          <label for="card{{i}}">Card {{i}}:</label>
+          <label for="card{{ loop.index }}">Card {{ loop.index }}:</label>
           <input
             type="text"
-            id="card{{i}}"
-            name="card{{i}}"
-            value="{{ card_inputs[i-1] }}"
+            id="card{{ loop.index }}"
+            name="card{{ loop.index }}"
+            value="{{ card }}"
             placeholder="e.g., Ace of Spades"
           />
         </div>
@@ -159,8 +159,10 @@
       </div>
 
       <h2 style="text-align: center">Recommended Actions</h2>
-      {% for i, (action, prob) in enumerate(prediction) %}
-      <div class="action {% if i == 0 %}best-action{% endif %}">
+      {% for action, prob in prediction %}
+      <div
+        class="action {% if loop.index0 == best_index %}best-action{% endif %}"
+      >
         <div class="action-name">
           <span>{{ action }}</span>
           <span>{{ "%.1f"|format(prob * 100) }}%</span>
